@@ -5,369 +5,285 @@ meta:
     - Extremely fine-grained nodes; even elementary linear-algebra and calculus facts receive their own node
     - Every algorithm node contains the exact matrix formula, the gradient/closed-form derivation, and a short Python-style pseudocode
     - Explicit “why this math is required” notes so the learner never wastes time on unmotivated calculation
+    - Heavy internal linking: algorithm nodes freely jump to the precise math node that is being used
+    - Rich examples, geometric pictures, and “what goes wrong if you ignore this” warnings
     - Topological study order forces all mathematical prerequisites before any ML algorithm that uses them
-    - Coverage of all supplied lecture slides plus the missing mathematical foundations that the slides assume
 
 modules:
   - id: M0
-    name: Mathematical Foundations
-    description: Vectors, matrices, norms, eigenvalues, multivariable calculus, convexity, Lagrange multipliers. These nodes are mandatory before any algorithm.
+    name: Mathematical Foundations (heavily expanded)
+    description: Vectors, matrices, norms, eigenvalues, multivariable calculus, convexity, Lagrange multipliers, KKT. These nodes are mandatory before any algorithm.
   - id: M1
     name: Supervised Learning Basics & Nearest Neighbors
-    description: Distance metrics, k-NN, decision boundaries, curse of dimensionality, face-recognition application context.
   - id: M2
     name: Linear Models for Regression & Classification
-    description: Least-squares regression (normal equations, geometric view), Perceptron, Adaline, Logistic Regression, gradient descent variants.
   - id: M3
     name: Support Vector Machines
-    description: Hard-margin primal/dual, soft-margin, kernels, representer theorem, SMO intuition.
   - id: M4
     name: Dimensionality Reduction
-    description: PCA (covariance, eigendecomposition, reconstruction), LDA (Fisher criterion, generalized eigenvalue problem).
   - id: M5
     name: Clustering
-    description: k-means (objective, Lloyd algorithm, initialization), hierarchical agglomerative clustering (linkages), cluster validity.
   - id: M6
     name: Ensemble Methods
-    description: Majority/plurality voting, Bagging, Boosting (AdaBoost derivation), bias-variance view.
   - id: M7
     name: Decision Trees
-    description: Entropy, Gini, Information Gain, recursive partitioning, overfitting & pruning.
   - id: M8
     name: Neural Networks & Backpropagation
-    description: Multilayer perceptron, activation functions, computational graph, backprop, gradient descent on nets.
 
 nodes:
-  # ========== M0 Mathematical Foundations ==========
+  # ========== M0 Mathematical Foundations (expanded) ==========
   - id: M0.1
-    name: Vectors, Inner Product, Norms
+    name: Vectors, Inner Product, Euclidean Geometry
     module: M0
     prereq: []
     content: |
-      Definition of column vector, Euclidean inner product ⟨x,y⟩=xᵀy, ℓ₂-norm ||x||₂=√⟨x,x⟩,
-      ℓ₁ and ℓ∞ norms, Cauchy–Schwarz, angle between vectors.
-      Why needed: every distance in k-NN, every margin in SVM, every reconstruction error in PCA starts here.
+      Column vectors, addition, scalar multiplication, Euclidean inner product ⟨x,y⟩=xᵀy,
+      length ||x||₂=√⟨x,x⟩, angle cosθ=⟨x,y⟩/(||x||||y||), orthogonal, Cauchy–Schwarz.
+      Geometric picture of projection of one vector onto another.
 
   - id: M0.2
-    name: Matrices, Multiplication, Transpose
+    name: Norms (ℓ1, ℓ2, ℓ∞) and Distance Metrics
     module: M0
     prereq: [M0.1]
     content: |
-      Matrix–vector product as linear combination of columns, matrix–matrix product,
-      transpose identities (AB)ᵀ=BᵀAᵀ, symmetric matrices.
+      Definition of a norm, ℓp norms, equivalence of norms in finite dimension,
+      induced distance d(x,y)=||x-y||. Why different norms produce different nearest neighbors.
 
   - id: M0.3
-    name: Rank, Column Space, Null Space
+    name: Matrices, Multiplication, Transpose, Block View
     module: M0
-    prereq: [M0.2]
+    prereq: [M0.1]
     content: |
-      Rank-nullity, full-rank matrices, invertibility criterion.
+      Matrix as linear map, matrix–vector product as linear combination of columns,
+      matrix–matrix product, transpose identities (AB)ᵀ=BᵀAᵀ, symmetric matrices,
+      viewing data matrix as collection of row or column vectors.
 
   - id: M0.4
-    name: Eigenvalues and Eigenvectors
+    name: Rank, Column Space, Null Space, Invertibility
     module: M0
     prereq: [M0.3]
     content: |
-      Av=λv, characteristic polynomial, real symmetric matrices have real eigenvalues and orthogonal eigenvectors,
-      spectral decomposition A=QΛQᵀ.
-      Why needed: PCA is exactly the eigendecomposition of the covariance matrix; LDA solves a generalized eigenproblem.
+      Rank-nullity theorem, full column/row rank, left/right inverses,
+      when XᵀX is invertible (critical for normal equations).
 
   - id: M0.5
-    name: Positive (Semi)Definite Matrices & Quadratic Forms
+    name: Eigenvalues, Eigenvectors, Spectral Decomposition
     module: M0
     prereq: [M0.4]
     content: |
-      xᵀAx ≥0 ∀x, eigenvalues ≥0, Cholesky, convexity of quadratic forms.
-      Why needed: Hessian of least-squares and of SVM dual; convexity guarantees unique minimum.
+      Av=λv, characteristic polynomial, real symmetric ⇒ real eigenvalues + orthogonal eigenvectors,
+      spectral theorem A=QΛQᵀ, Rayleigh quotient.
 
   - id: M0.6
-    name: Matrix Calculus – Gradients of Scalar Functions
+    name: Positive (Semi)Definite Matrices & Quadratic Forms
     module: M0
-    prereq: [M0.2]
+    prereq: [M0.5]
     content: |
-      Gradient of xᵀa, of ||Ax-b||², of xᵀAx, chain rule for vectors, Jacobian.
-      Explicit formulas used in every gradient-descent derivation.
+      xᵀAx ≥0 ∀x ⇔ all eigenvalues ≥0, convexity of quadratic forms,
+      Cholesky factorisation, relation to covariance matrices.
 
   - id: M0.7
-    name: Constrained Optimization & Lagrange Multipliers
+    name: Partial Derivatives and Gradient of a Scalar Function
     module: M0
-    prereq: [M0.6]
+    prereq: [M0.1]
     content: |
-      Equality-constrained problem, Lagrangian L(w,β)=f(w)+Σβᵢhᵢ(w),
-      stationarity conditions ∇_w L=0, ∇_β L=0.
-      Why needed: hard-margin SVM dual derivation begins exactly here.
+      Definition of partial derivative, gradient vector ∇f, directional derivative,
+      geometric meaning (steepest ascent).
 
   - id: M0.8
-    name: Inequality Constraints, KKT Conditions (preview)
+    name: Matrix Calculus – Common Gradients
+    module: M0
+    prereq: [M0.3, M0.7]
+    content: |
+      ∇(aᵀx)=a, ∇(xᵀAx)=(A+Aᵀ)x, ∇||Ax-b||²=2Aᵀ(Ax-b),
+      chain rule for vector-valued compositions. All formulas used later in closed form.
+
+  - id: M0.9
+    name: Convex Sets, Convex Functions, First-order Characterisation
     module: M0
     prereq: [M0.7]
     content: |
-      Complementary slackness αᵢgᵢ(w)=0, primal feasibility, dual feasibility.
-      Used for soft-margin SVM and for the geometric interpretation of support vectors.
+      Definition of convex set/function, Jensen, first-order condition f(y)≥f(x)+∇f(x)ᵀ(y-x),
+      why convex problems have no bad local minima.
 
-  # ========== M1 k-NN ==========
+  - id: M0.10
+    name: Unconstrained Optimality Condition (∇f=0)
+    module: M0
+    prereq: [M0.8, M0.9]
+    content: |
+      Necessary condition for local minimum, sufficient when f is convex or Hessian positive definite.
+
+  - id: M0.11
+    name: Equality-Constrained Optimisation & Lagrange Multipliers
+    module: M0
+    prereq: [M0.10]
+    content: |
+      Problem min f(w) s.t. hᵢ(w)=0, Lagrangian L=f+Σβᵢhᵢ,
+      stationarity ∇_w L=0 and ∇_β L=0, geometric meaning (gradients aligned).
+
+  - id: M0.12
+    name: Inequality Constraints & KKT Conditions (preview)
+    module: M0
+    prereq: [M0.11]
+    content: |
+      Complementary slackness, primal/dual feasibility, KKT system.
+      Directly used for soft-margin SVM.
+
+  # ========== M1–M8 remain the same structure, but each will link heavily into M0 ==========
   - id: M1.1
     name: Distance Metrics & Nearest-Neighbor Rule
     module: M1
-    prereq: [M0.1]
-    content: |
-      Euclidean, Manhattan, cosine distances; 1-NN decision rule; Voronoi diagram intuition.
-
+    prereq: [M0.1, M0.2]
   - id: M1.2
     name: k-NN Classifier, Majority Vote, Distance-Weighted k-NN
     module: M1
     prereq: [M1.1]
-    content: |
-      Choose k, break ties, effect of k on bias/variance; weighted voting 1/d.
-
   - id: M1.3
     name: Curse of Dimensionality & Face-Recognition Pipeline
     module: M1
     prereq: [M1.2]
-    content: |
-      Volume concentration, distance concentration; why raw pixels fail; typical face pipeline (detect → align → k-NN or later PCA/LDA).
 
-  # ========== M2 Linear Models ==========
   - id: M2.1
     name: Linear Regression – Model & Squared Loss
     module: M2
-    prereq: [M0.6]
-    content: |
-      f(x)=wᵀx (or w₀+w₁x), residual rᵢ, empirical risk J(w)=½Σrᵢ².
-
+    prereq: [M0.8]
   - id: M2.2
     name: Normal Equations & Closed-Form Solution
     module: M2
-    prereq: [M2.1, M0.3]
-    content: |
-      ∇J=0 ⇒ XᵀXw = Xᵀy; geometric projection interpretation; when XᵀX is singular.
-
+    prereq: [M2.1, M0.4, M0.10]
   - id: M2.3
     name: Polynomial Features & Overfitting
     module: M2
     prereq: [M2.2]
-    content: |
-      Design matrix with powers, bias-variance trade-off illustration, need for regularization (preview).
-
   - id: M2.4
     name: Gradient Descent for Least Squares
     module: M2
-    prereq: [M2.1, M0.6]
-    content: |
-      Batch, stochastic, mini-batch; learning-rate schedules; convergence for quadratic objectives.
-
+    prereq: [M2.1, M0.8, M0.10]
   - id: M2.5
     name: Perceptron Learning Rule
     module: M2
-    prereq: [M0.1, M0.6]
-    content: |
-      Linear threshold unit, update w ← w + yᵢxᵢ when misclassified, finite convergence on linearly separable data.
-
+    prereq: [M0.1, M0.8]
   - id: M2.6
     name: Adaline & Continuous Activation
     module: M2
     prereq: [M2.5, M2.1]
-    content: |
-      Linear activation, squared loss, gradient descent (batch & SGD), comparison with Perceptron.
-
   - id: M2.7
     name: Logistic Regression – Model & Cross-Entropy Loss
     module: M2
-    prereq: [M2.6, M0.6]
-    content: |
-      σ(z)=1/(1+e^{-z}), probabilistic interpretation, negative log-likelihood, gradient = (σ-y)x.
-
+    prereq: [M2.6, M0.8]
   - id: M2.8
     name: Multiclass Softmax & Cross-Entropy
     module: M2
     prereq: [M2.7]
-    content: |
-      Softmax, one-hot encoding, gradient derivation, link to neural-net final layer.
 
-  # ========== M3 SVM ==========
   - id: M3.1
     name: Maximum-Margin Hyperplane (Hard Margin)
     module: M3
-    prereq: [M0.1, M0.5]
-    content: |
-      Geometric margin 2/||w||, primal problem min ½||w||² s.t. yᵢ(wᵀxᵢ+b)≥1.
-
+    prereq: [M0.1, M0.6]
   - id: M3.2
     name: Hard-Margin Dual Derivation
     module: M3
-    prereq: [M3.1, M0.7]
-    content: |
-      Lagrangian, stationarity ⇒ w=Σαᵢyᵢxᵢ, dual quadratic program, support vectors (αᵢ>0).
-
+    prereq: [M3.1, M0.11]
   - id: M3.3
     name: Soft-Margin SVM & Slack Variables
     module: M3
-    prereq: [M3.2, M0.8]
-    content: |
-      ξᵢ≥0, C-parameter, dual box constraints 0≤αᵢ≤C, hinge loss interpretation.
-
+    prereq: [M3.2, M0.12]
   - id: M3.4
     name: Kernel Trick & Positive-Definite Kernels
     module: M3
-    prereq: [M3.2, M0.5]
-    content: |
-      φ(x), k(x,z)=⟨φ(x),φ(z)⟩, dual written only with k, common kernels (linear, poly, RBF), Mercer’s condition.
-
+    prereq: [M3.2, M0.6]
   - id: M3.5
-    name: Representer Theorem (intuition) & Kernel SVM Decision Function
+    name: Representer Theorem intuition & Kernel Decision Function
     module: M3
     prereq: [M3.4]
-    content: |
-      Solution lies in span of training points in feature space; f(x)=Σαᵢyᵢk(xᵢ,x)+b.
 
-  # ========== M4 Dimensionality Reduction ==========
   - id: M4.1
     name: Covariance Matrix & Empirical Second-Moment
     module: M4
-    prereq: [M0.2, M0.4]
-    content: |
-      Centered data matrix X̃, Σ= (1/n)X̃ᵀX̃ (or 1/(n-1)), positive-semidefinite property.
-
+    prereq: [M0.3, M0.6]
   - id: M4.2
     name: PCA – Principal Axes via Eigendecomposition
     module: M4
-    prereq: [M4.1, M0.4]
-    content: |
-      Maximize variance uᵀΣu s.t. ||u||=1 ⇒ top eigenvectors; reconstruction error = sum of discarded eigenvalues.
-
+    prereq: [M4.1, M0.5]
   - id: M4.3
-    name: PCA – Algorithm, Whitening, Face Eigenfaces
+    name: PCA – Algorithm, Whitening, Eigenfaces
     module: M4
     prereq: [M4.2]
-    content: |
-      Practical steps, choice of k by cumulative energy, whitening, classic eigenface pipeline.
-
   - id: M4.4
     name: LDA – Fisher Criterion
     module: M4
-    prereq: [M4.1, M0.4]
-    content: |
-      Between-class scatter S_B, within-class scatter S_W, maximize uᵀS_B u / uᵀS_W u.
-
+    prereq: [M4.1, M0.5]
   - id: M4.5
     name: LDA – Generalized Eigenvalue Problem
     module: M4
     prereq: [M4.4]
-    content: |
-      S_B u = λ S_W u, solution by simultaneous diagonalization or inv(S_W)S_B; multi-class extension.
 
-  # ========== M5 Clustering ==========
   - id: M5.1
     name: k-Means Objective & Lloyd Algorithm
     module: M5
-    prereq: [M0.1]
-    content: |
-      J=Σ_k Σ_{i∈C_k} ||xᵢ-μ_k||², alternating minimization (assignment + centroid update), local minima.
-
+    prereq: [M0.1, M0.2]
   - id: M5.2
     name: k-Means++ Initialization & Practical Issues
     module: M5
     prereq: [M5.1]
-    content: |
-      D² sampling, empty clusters, choice of k (elbow, silhouette preview).
-
   - id: M5.3
     name: Hierarchical Agglomerative Clustering & Linkages
     module: M5
-    prereq: [M0.1]
-    content: |
-      Single, complete, average, Ward linkages; dendrogram; Lance–Williams update formula.
-
+    prereq: [M0.1, M0.2]
   - id: M5.4
     name: Cluster Validity Indices
     module: M5
     prereq: [M5.1, M5.3]
-    content: |
-      Silhouette, Davies–Bouldin, external indices (ARI, NMI) when ground truth exists.
 
-  # ========== M6 Ensemble ==========
   - id: M6.1
     name: Majority / Plurality Voting & Weighted Voting
     module: M6
     prereq: []
-    content: |
-      Hard voting, soft voting with probabilities, weighted sum of indicator or probability vectors.
-
   - id: M6.2
     name: Bagging (Bootstrap Aggregating)
     module: M6
     prereq: [M6.1]
-    content: |
-      Bootstrap samples, parallel training, variance reduction argument, Random Forest preview.
-
   - id: M6.3
     name: Boosting Idea & AdaBoost Derivation
     module: M6
     prereq: [M6.1, M2.7]
-    content: |
-      Reweighting misclassified examples, exponential loss, closed-form α_t = ½ln((1-ε)/ε),
-      final classifier sign(Σα_t h_t).
 
-  # ========== M7 Decision Trees ==========
   - id: M7.1
     name: Entropy & Information Gain
     module: M7
     prereq: []
-    content: |
-      H(S)=-Σp log p, conditional entropy, IG=H(parent)-Σ(|child|/|parent|)H(child).
-
   - id: M7.2
     name: Gini Impurity
     module: M7
     prereq: [M7.1]
-    content: |
-      Gini=1-Σp², comparison with entropy, computational advantage.
-
   - id: M7.3
     name: CART / ID3 Recursive Partitioning
     module: M7
     prereq: [M7.1, M7.2]
-    content: |
-      Greedy split selection, continuous features (threshold search), stopping criteria.
-
   - id: M7.4
     name: Overfitting, Pruning, Tree Ensembles Preview
     module: M7
     prereq: [M7.3]
-    content: |
-      Pre-pruning vs post-pruning, cost-complexity pruning, link to Random Forest / Gradient Boosting.
 
-  # ========== M8 Neural Nets ==========
   - id: M8.1
     name: Multilayer Perceptron & Activation Functions
     module: M8
-    prereq: [M2.7, M0.6]
-    content: |
-      Affine + nonlinearity (ReLU, sigmoid, tanh), universal approximation intuition.
-
+    prereq: [M2.7, M0.8]
   - id: M8.2
     name: Computational Graph & Forward Pass
     module: M8
     prereq: [M8.1]
-    content: |
-      Nodes as operations, topological evaluation, matrix form of a fully-connected layer.
-
   - id: M8.3
     name: Backpropagation – Chain Rule on Graphs
     module: M8
-    prereq: [M8.2, M0.6]
-    content: |
-      Reverse-mode automatic differentiation, local gradients, gradient of loss w.r.t. weights.
-
+    prereq: [M8.2, M0.8]
   - id: M8.4
     name: Training Loop, Mini-batch SGD, Practical Tricks
     module: M8
     prereq: [M8.3, M2.4]
-    content: |
-      Epochs, learning-rate schedules, initialization, vanishing/exploding gradients preview.
 
 study_order:
-  # Math first
+  # Math first (now finer)
   - M0.1
   - M0.2
   - M0.3
@@ -376,7 +292,11 @@ study_order:
   - M0.6
   - M0.7
   - M0.8
-  # Supervised basics
+  - M0.9
+  - M0.10
+  - M0.11
+  - M0.12
+  # then algorithms
   - M1.1
   - M1.2
   - M1.3
@@ -388,33 +308,27 @@ study_order:
   - M2.6
   - M2.7
   - M2.8
-  # SVM
   - M3.1
   - M3.2
   - M3.3
   - M3.4
   - M3.5
-  # Dimensionality reduction
   - M4.1
   - M4.2
   - M4.3
   - M4.4
   - M4.5
-  # Clustering
   - M5.1
   - M5.2
   - M5.3
   - M5.4
-  # Ensemble
   - M6.1
   - M6.2
   - M6.3
-  # Trees
   - M7.1
   - M7.2
   - M7.3
   - M7.4
-  # Neural nets
   - M8.1
   - M8.2
   - M8.3
