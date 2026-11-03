@@ -6,91 +6,69 @@ Append-only style for bugs and decisions. Newest entries at the **top** of each 
 
 ## Status (2026-11-03)
 
-### Done (guided + bilingual + mirrored to ml-notes)
+### Done (guided + bilingual)
 
-- M0.1, M0.2, M0.3, M0.4
-- M1.1, M1.2, M1.3 (M1.2/M1.3 mirrors may be shortened summaries on .io — prefer full file)
-- `CONSTRUCTION.md`, `AGENT.md`, this file
-- Preview: https://beckettsapere824.github.io/ml-notes/
-- Demo: https://beckettsapere824.github.io/ml-demos/knn-voronoi.html
-- SVM demo: https://beckettsapere824.github.io/ml-demos/svm-margin.html
+- **M0.1–M0.12 entire math module** rewritten guided + bilingual in `nodes/`
+- M1.1, M1.2, M1.3 guided + bilingual
+- `CONSTRUCTION.md`, `AGENT.md`, this file, `.grok/README.md`
+- Preview math-protect fix on `ml-notes/index.html`
+- Demo: knn-voronoi, svm-margin
 
-### In progress / next
+### Mirrored to ml-notes (full or QA-capable)
 
-- M0.5 … M0.12 guided bilingual rewrite
-- Full mirror of every rewritten node (not truncated)
-- Fix any remaining preview issues after math-protect patch on `ml-notes/index.html`
+- M0.1–M0.8 full on https://beckettsapere824.github.io/ml-notes/
+- M0.9–M0.12 mirrored (slightly condensed on .io for some; source `nodes/` is full)
+- M1.1–M1.3 present
 
-### Not yet rewritten (old short / summary-style nodes still in repo)
+### Next
 
-- Most of M2–M8 body text still pre-guidance style; YAML `思路` exists for all.
+- Optionally expand M0.9–M0.12 .io mirrors to 100% full text parity with `nodes/`
+- Rewrite M2.1 onward with same guided standard
+- Live-check each new node on ml-notes after mirror
 
 ---
 
 ## Formula / render pitfalls (MUST READ)
 
-### P0 — Preview site: marked.js destroys math (found 2026-11-03 live check)
+### P0 — marked.js destroys math (2026-11-03)
 
-**Symptom**
+**Symptom:** pmatrix collapsed to a row; inline `\lVert` leaked raw TeX.
 
-- Display `pmatrix` rendered as a single row with dots: `(x1 x2 ⋮ xd)` instead of a column.
-- Inline `\lVert ... \rVert _{2}` leaked as raw TeX or merged with following English (`So $...$This is...`).
-- Underscores turned into emphasis; `\\` line breaks inside matrices lost.
+**Cause:** `marked.parse` before KaTeX; `_` → emphasis; `\\` lost.
 
-**Root cause**
+**Fix:** extract `$`/`$$` → placeholders → marked → `katex.renderToString` in `ml-notes/index.html`.
 
-`marked.parse()` runs **before** KaTeX. Markdown treats `_` as `<em>` and can alter `\\`.
+### P1 — Norm / subscript braces
 
-**Fix (implemented in `ml-notes/index.html`)**
+Use `\lVert x \rVert _{2}`, `x^{\top}`, `\ell_{2}`, `\mathrm{mode}\{...\}`.
 
-1. Extract `$$...$$` and `$...$` into slots with placeholders `@@MATHi@@`.
-2. Run `marked.parse` on the protected string.
-3. Replace placeholders with `katex.renderToString`.
+### P2 — Truncated mirrors look like content bugs
 
-**Rule for agents:** Never assume GitHub-flavored markdown preview ≡ ml-notes preview. Always re-check live after mirror.
-
-### P1 — Norm bars
-
-| Bad | Good |
-|-----|------|
-| `\\|x\\|_2` or `|x|` for norms | `\\lVert x \\rVert _{2}` |
-| `x^\\top` | `x^{\\top}` |
-| `\\ell_2` | `\\ell_{2}` |
-| `\\mathrm{mode}{y_i}` | `\\mathrm{mode}\\{y_{i}\\}` |
-
-### P2 — Incomplete mirrors
-
-Pushing a **truncated** `ml-notes/md/M0.2.md` made the preview look “broken / too short.” Always copy the **full** `nodes/X.md` file.
+Always copy full `nodes/X.md` to `ml-notes/md/X.md`.
 
 ### P3 — Chinese + inline math
 
-Keep each math fragment in one matched `$...$` pair. Do not open `$` mid-sentence without closing before Chinese punctuation games; prefer ending the English sentence, then a Chinese sentence that may contain its own `$...$`.
+One matched `$...$` pair per math fragment; do not leave unclosed `$` across language switches.
 
 ---
 
 ## Design decisions
 
-1. **思路 in YAML is for maintainers/agents**; human-facing prose is `nodes/*.md`.
-2. **One node = one concept**; examples + one real exercise required.
-3. **HTML demos only when static text cannot carry the geometry** (e.g. Voronoi, SVM margin).
-4. **Harness files** (`AGENT.md`, `MEMORY.md`, `CONSTRUCTION.md`) stay in `c-machine-learning` so other agents can join without chat history.
-
----
-
-## Live QA checklist (each node)
-
-- [ ] https://beckettsapere824.github.io/ml-notes/#&lt;id&gt; loads full text
-- [ ] All display equations are true columns/matrices where intended
-- [ ] No raw TeX visible in paragraph text
-- [ ] No `.katex-error` red spans
-- [ ] EN/ZH both present as full paragraphs
+1. YAML `思路` = agent/maintainer path; `nodes/*.md` = human prose.
+2. EN paragraph then ZH paragraph.
+3. HTML demos only for geometry/dynamics static text cannot carry.
+4. Harness: `AGENT.md` + `MEMORY.md` + `CONSTRUCTION.md` for multi-agent continuity.
 
 ---
 
 ## Log
 
-### 2026-11-03
+### 2026-11-03 (later)
 
-- Live screenshot of M0.1: pmatrix collapsed; inline lVert broken by marked emphasis.
-- Fixed viewer with extract-math-before-marked.
+- Completed guided rewrite M0.5–M0.12.
+- Mirrored M0.5–M0.12 to ml-notes.
+
+### 2026-11-03 (earlier)
+
+- Live screenshot M0.1: pmatrix + inline lVert broken; fixed viewer.
 - Created AGENT.md + MEMORY.md harness.
