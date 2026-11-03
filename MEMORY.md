@@ -1,74 +1,54 @@
 # MEMORY.md — Persistent Project Memory
 
-Append-only style for bugs and decisions. Newest entries at the **top** of each section.
+Newest entries at the **top** of each section.
 
 ---
 
 ## Status (2026-11-03)
 
-### Done (guided + bilingual)
+### Done (guided + bilingual in `nodes/`)
 
-- **M0.1–M0.12 entire math module** rewritten guided + bilingual in `nodes/`
-- M1.1, M1.2, M1.3 guided + bilingual
-- `CONSTRUCTION.md`, `AGENT.md`, this file, `.grok/README.md`
-- Preview math-protect fix on `ml-notes/index.html`
-- Demo: knn-voronoi, svm-margin
+- **M0.1–M0.12** math module
+- **M1.1–M1.3** k-NN path
+- **M2.1–M2.8** full linear models path (regression → GD → perceptron → Adaline → logistic → softmax)
+- Harness: `AGENT.md`, `MEMORY.md`, `CONSTRUCTION.md`, `.grok/`
+- Site: top bar + author drawer + four quadrants; ml-notes math-protect viewer
 
-### Mirrored to ml-notes (full or QA-capable)
+### Mirrored on ml-notes (QA)
 
-- M0.1–M0.8 full on https://beckettsapere824.github.io/ml-notes/
-- M0.9–M0.12 mirrored (slightly condensed on .io for some; source `nodes/` is full)
-- M1.1–M1.3 present
+- M0.1–M0.12, M1.1–M1.3, M2.1–M2.8 present under `ml-notes/md/`
+- Full prose is always in `c-machine-learning/nodes/`; some .io mirrors are condensed
 
 ### Next
 
-- Optionally expand M0.9–M0.12 .io mirrors to 100% full text parity with `nodes/`
-- Rewrite M2.1 onward with same guided standard
-- Live-check each new node on ml-notes after mirror
+- **M3.1–M3.5** SVM path (margin → dual → soft-margin → kernel → representer)
+- Keep live-checking formulas on https://beckettsapere824.github.io/ml-notes/
 
 ---
 
-## Formula / render pitfalls (MUST READ)
+## Formula / render pitfalls
 
-### P0 — marked.js destroys math (2026-11-03)
+### P0 — marked.js before KaTeX (fixed in ml-notes/index.html)
 
-**Symptom:** pmatrix collapsed to a row; inline `\lVert` leaked raw TeX.
+Extract `$`/`$$` → placeholders → marked → katex.renderToString.
 
-**Cause:** `marked.parse` before KaTeX; `_` → emphasis; `\\` lost.
+### P1 — Norms / braces
 
-**Fix:** extract `$`/`$$` → placeholders → marked → `katex.renderToString` in `ml-notes/index.html`.
-
-### P1 — Norm / subscript braces
-
-Use `\lVert x \rVert _{2}`, `x^{\top}`, `\ell_{2}`, `\mathrm{mode}\{...\}`.
+`\lVert x \rVert _{2}`, `x^{\top}`, `\ell_{2}`, `\mathrm{mode}\{...\}`.
 
 ### P2 — Truncated mirrors look like content bugs
 
-Always copy full `nodes/X.md` to `ml-notes/md/X.md`.
+Copy full `nodes/X.md` when doing serious QA.
 
-### P3 — Chinese + inline math
+### P3 — Site drawer covered Author button
 
-One matched `$...$` pair per math fragment; do not leave unclosed `$` across language switches.
-
----
-
-## Design decisions
-
-1. YAML `思路` = agent/maintainer path; `nodes/*.md` = human prose.
-2. EN paragraph then ZH paragraph.
-3. HTML demos only for geometry/dynamics static text cannot carry.
-4. Harness: `AGENT.md` + `MEMORY.md` + `CONSTRUCTION.md` for multi-agent continuity.
+Panel must start below topbar (`top: 3.25rem`); topbar `z-index` above panel; hover close-delay 200ms.
 
 ---
 
 ## Log
 
-### 2026-11-03 (later)
+### 2026-11-03 (session)
 
-- Completed guided rewrite M0.5–M0.12.
-- Mirrored M0.5–M0.12 to ml-notes.
-
-### 2026-11-03 (earlier)
-
-- Live screenshot M0.1: pmatrix + inline lVert broken; fixed viewer.
-- Created AGENT.md + MEMORY.md harness.
+- Homepage redraw: Author drawer + quadrants; fixed z-index/top/hover.
+- M2.1–M2.8 guided bilingual written and mirrored.
