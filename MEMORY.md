@@ -6,25 +6,28 @@ Newest entries at the **top** of each section.
 
 ## Status (2026-11-03)
 
-### Done (guided + bilingual in `nodes/`)
+### Done — full planned tree (guided + bilingual in `nodes/`)
 
-- **M0.1–M0.12** math
-- **M1.1–M1.3** k-NN
-- **M2.1–M2.8** linear models / logistic / softmax
-- **M3.1–M3.5** SVM
-- **M4.1–M4.5** PCA + LDA
-- **M5.1–M5.4** clustering
-- **M6.1–M6.3** ensembles
-- **M7.1–M7.4** trees (entropy, Gini, CART, pruning)
-- Site harness + ml-notes preview + demos
+| Module | Nodes |
+|--------|--------|
+| M0 Math | M0.1–M0.12 |
+| M1 k-NN | M1.1–M1.3 |
+| M2 Linear / logistic | M2.1–M2.8 |
+| M3 SVM | M3.1–M3.5 |
+| M4 PCA / LDA | M4.1–M4.5 |
+| M5 Clustering | M5.1–M5.4 |
+| M6 Ensembles | M6.1–M6.3 |
+| M7 Trees | M7.1–M7.4 |
+| M8 Neural nets | M8.1–M8.4 |
 
-### Mirrored on ml-notes (QA)
+Also: `AGENT.md`, `CONSTRUCTION.md`, site (Author drawer + quadrants), ml-notes KaTeX preview, knn/svm demos.
 
-- M0–M7 under `ml-notes/md/` (some condensed; full text in `nodes/`)
+### Optional next improvements
 
-### Next
-
-- **M8** neural nets & backprop (last module of the planned tree)
+- Expand condensed ml-notes mirrors to full `nodes/` parity
+- Live formula QA pass on every node
+- More guided HTML demos where geometry is hard in text
+- Deepen thin lecture topics beyond YAML coverage
 
 ---
 
@@ -41,5 +44,5 @@ Newest entries at the **top** of each section.
 
 ### 2026-11-03
 
-- M7.1–M7.4 guided bilingual written and mirrored.
-- M0–M6 completed earlier same day.
+- M8.1–M8.4 written and mirrored — **planned prerequisite tree complete**.
+- M0–M7 completed earlier same day.
