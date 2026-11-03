@@ -11,17 +11,18 @@ Newest entries at the **top** of each section.
 - **M0.1–M0.12** math
 - **M1.1–M1.3** k-NN
 - **M2.1–M2.8** linear models / logistic / softmax
-- **M3.1–M3.5** SVM (hard margin, dual, soft margin, kernel, representer)
+- **M3.1–M3.5** SVM
+- **M4.1–M4.5** PCA + LDA
 - Site harness + ml-notes preview + demos
 
 ### Mirrored on ml-notes (QA)
 
-- M0–M3 present under `ml-notes/md/` (some condensed; full text in `nodes/`)
+- M0–M4 under `ml-notes/md/` (some condensed; full text in `nodes/`)
 
 ### Next
 
-- **M4** PCA (covariance → eigen → algorithm / eigenfaces)
-- Then M5 clustering, M6–M8 per YAML
+- **M5** clustering (k-means, k-means++, hierarchical, validity)
+- Then M6 ensembles, M7 trees, M8 neural nets
 
 ---
 
@@ -33,25 +34,22 @@ Extract `$`/`$$` → placeholders → marked → katex.renderToString.
 
 ### P1 — Norms / braces
 
-`\lVert x \rVert _{2}`, `x^{\top}`, `\ell_{2}`, `\mathrm{mode}\{...\}`.
+`\lVert x \rVert _{2}`, `x^{\top}`, `\ell_{2}`.
 
-### P2 — Truncated mirrors look like content bugs
+### P2 — Truncated mirrors
 
-Copy full `nodes/X.md` when doing serious QA.
+Full text in `c-machine-learning/nodes/`.
 
-### P3 — Site drawer covered Author button
+### P3 — Author drawer vs topbar
 
-Panel must start below topbar (`top: 3.25rem`); topbar `z-index` above panel; hover close-delay 200ms.
+Panel `top: 3.25rem`; topbar higher z-index; hover close-delay 200ms.
 
 ---
 
 ## Log
 
-### 2026-11-03 (later)
+### 2026-11-03
 
-- M3.1–M3.5 guided bilingual written and mirrored.
-
-### 2026-11-03 (earlier)
-
-- Homepage redraw: Author drawer + quadrants; fixed z-index/top/hover.
-- M2.1–M2.8 guided bilingual written and mirrored.
+- M4.1–M4.5 guided bilingual written and mirrored.
+- M3.1–M3.5 done earlier same day.
+- M2 and homepage fixes earlier same day.
