@@ -14,17 +14,17 @@ Newest entries at the **top** of each section.
 - **M3.1–M3.5** SVM
 - **M4.1–M4.5** PCA + LDA
 - **M5.1–M5.4** clustering
-- **M6.1–M6.3** ensembles (voting, bagging, AdaBoost)
+- **M6.1–M6.3** ensembles
+- **M7.1–M7.4** trees (entropy, Gini, CART, pruning)
 - Site harness + ml-notes preview + demos
 
 ### Mirrored on ml-notes (QA)
 
-- M0–M6 under `ml-notes/md/` (some condensed; full text in `nodes/`)
+- M0–M7 under `ml-notes/md/` (some condensed; full text in `nodes/`)
 
 ### Next
 
-- **M7** trees (entropy, Gini, CART, pruning)
-- **M8** neural nets & backprop
+- **M8** neural nets & backprop (last module of the planned tree)
 
 ---
 
@@ -41,5 +41,5 @@ Newest entries at the **top** of each section.
 
 ### 2026-11-03
 
-- M6.1–M6.3 guided bilingual written and mirrored.
-- M0–M5 completed earlier same day.
+- M7.1–M7.4 guided bilingual written and mirrored.
+- M0–M6 completed earlier same day.
