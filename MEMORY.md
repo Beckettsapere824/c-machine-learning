@@ -8,21 +8,20 @@ Newest entries at the **top** of each section.
 
 ### Done (guided + bilingual in `nodes/`)
 
-- **M0.1–M0.12** math module
-- **M1.1–M1.3** k-NN path
-- **M2.1–M2.8** full linear models path (regression → GD → perceptron → Adaline → logistic → softmax)
-- Harness: `AGENT.md`, `MEMORY.md`, `CONSTRUCTION.md`, `.grok/`
-- Site: top bar + author drawer + four quadrants; ml-notes math-protect viewer
+- **M0.1–M0.12** math
+- **M1.1–M1.3** k-NN
+- **M2.1–M2.8** linear models / logistic / softmax
+- **M3.1–M3.5** SVM (hard margin, dual, soft margin, kernel, representer)
+- Site harness + ml-notes preview + demos
 
 ### Mirrored on ml-notes (QA)
 
-- M0.1–M0.12, M1.1–M1.3, M2.1–M2.8 present under `ml-notes/md/`
-- Full prose is always in `c-machine-learning/nodes/`; some .io mirrors are condensed
+- M0–M3 present under `ml-notes/md/` (some condensed; full text in `nodes/`)
 
 ### Next
 
-- **M3.1–M3.5** SVM path (margin → dual → soft-margin → kernel → representer)
-- Keep live-checking formulas on https://beckettsapere824.github.io/ml-notes/
+- **M4** PCA (covariance → eigen → algorithm / eigenfaces)
+- Then M5 clustering, M6–M8 per YAML
 
 ---
 
@@ -48,7 +47,11 @@ Panel must start below topbar (`top: 3.25rem`); topbar `z-index` above panel; ho
 
 ## Log
 
-### 2026-11-03 (session)
+### 2026-11-03 (later)
+
+- M3.1–M3.5 guided bilingual written and mirrored.
+
+### 2026-11-03 (earlier)
 
 - Homepage redraw: Author drawer + quadrants; fixed z-index/top/hover.
 - M2.1–M2.8 guided bilingual written and mirrored.
