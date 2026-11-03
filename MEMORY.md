@@ -13,16 +13,18 @@ Newest entries at the **top** of each section.
 - **M2.1–M2.8** linear models / logistic / softmax
 - **M3.1–M3.5** SVM
 - **M4.1–M4.5** PCA + LDA
+- **M5.1–M5.4** clustering (k-means, ++, hierarchical, validity)
 - Site harness + ml-notes preview + demos
 
 ### Mirrored on ml-notes (QA)
 
-- M0–M4 under `ml-notes/md/` (some condensed; full text in `nodes/`)
+- M0–M5 under `ml-notes/md/` (some condensed; full text in `nodes/`)
 
 ### Next
 
-- **M5** clustering (k-means, k-means++, hierarchical, validity)
-- Then M6 ensembles, M7 trees, M8 neural nets
+- **M6** ensembles (voting, bagging, AdaBoost)
+- **M7** trees (entropy, Gini, CART)
+- **M8** neural nets & backprop
 
 ---
 
@@ -30,19 +32,11 @@ Newest entries at the **top** of each section.
 
 ### P0 — marked.js before KaTeX (fixed in ml-notes/index.html)
 
-Extract `$`/`$$` → placeholders → marked → katex.renderToString.
+### P1 — Norms / braces: `\lVert x \rVert _{2}`, `x^{\top}`
 
-### P1 — Norms / braces
+### P2 — Full text in `nodes/`; ml-notes may be condensed
 
-`\lVert x \rVert _{2}`, `x^{\top}`, `\ell_{2}`.
-
-### P2 — Truncated mirrors
-
-Full text in `c-machine-learning/nodes/`.
-
-### P3 — Author drawer vs topbar
-
-Panel `top: 3.25rem`; topbar higher z-index; hover close-delay 200ms.
+### P3 — Author drawer: panel below topbar, z-index, hover close-delay
 
 ---
 
@@ -50,6 +44,5 @@ Panel `top: 3.25rem`; topbar higher z-index; hover close-delay 200ms.
 
 ### 2026-11-03
 
-- M4.1–M4.5 guided bilingual written and mirrored.
-- M3.1–M3.5 done earlier same day.
-- M2 and homepage fixes earlier same day.
+- M5.1–M5.4 guided bilingual written and mirrored.
+- M0–M4 completed earlier same day.
