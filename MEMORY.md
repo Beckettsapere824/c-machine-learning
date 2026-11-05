@@ -10,16 +10,24 @@ Newest entries at the **top** of each section.
 
 M0–M8 guided bilingual complete.
 
-### ml-notes full-text sync — **parity complete**
+### ml-notes full-text sync — parity complete
 
-All modules **M0–M8** are mirrored in full on https://beckettsapere824.github.io/ml-notes/ (source of truth remains `c-machine-learning/nodes/`).
+All modules **M0–M8** mirrored on https://beckettsapere824.github.io/ml-notes/
+
+### Papers (guided readings)
+
+- **Ng–Jordan–Weiss spectral clustering (theory)**  
+  - Source: `notes/spectral-clustering-ngjw.md`  
+  - Preview: https://beckettsapere824.github.io/ml-notes/#PAPER-spectral-clustering  
+  - Nav: bottom of left column (“Paper · NJW spectral”)  
+  - Linked from M5.1
 
 ### Optional next
 
-1. Live formula QA pass across every node on the preview site
-2. More guided HTML demos where geometry is hard in text
-3. Deepen thin lecture topics beyond YAML coverage
-4. Homepage / Library link polish if needed
+1. Live formula QA pass
+2. More guided HTML demos
+3. Deepen thin topics / more paper readings
+4. Expand Theorem 2 proof inequalities on request
 
 ---
 
@@ -27,25 +35,14 @@ All modules **M0–M8** are mirrored in full on https://beckettsapere824.github.
 
 ### P0 — marked.js before KaTeX (fixed in ml-notes/index.html)
 ### P1 — Norms / braces: `\lVert x \rVert _{2}`, `x^{\top}`
-### P2 — Prefer full `nodes/` text on ml-notes; avoid truncated mirrors
+### P2 — Prefer full `nodes/` text on ml-notes
 ### P3 — Author drawer: panel below topbar, z-index, hover close-delay
 
 ---
 
 ## Log
 
-### 2026-11-05 (later)
+### 2026-11-05
 
-- Full sync M5–M8; **ml-notes now matches nodes/ for entire tree**.
-
-### 2026-11-05 (earlier)
-
-- Full sync M1.1–M1.3, M3, M4.
-
-### 2026-11-04
-
-- Full sync M0.4, M0.9–M0.12, M2.1–M2.8.
-
-### 2026-11-03
-
-- M0–M8 guided tree written; site + demos + harness.
+- Added guided NJW spectral clustering paper (Lectures 0–7); nav + M5.1 link.
+- Full M0–M8 ml-notes parity earlier same day.
