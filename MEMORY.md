@@ -10,27 +10,16 @@ Newest entries at the **top** of each section.
 
 M0–M8 guided bilingual complete.
 
-### ml-notes full-text sync
+### ml-notes full-text sync — **parity complete**
 
-**Full (or near-full) on https://beckettsapere824.github.io/ml-notes/**:
-
-- M0.1–M0.12
-- **M1.2, M1.3** (M1.1 still to push as full if not already)
-- M2.1–M2.8
-- **M3.1–M3.5**
-- **M4.1–M4.5**
-
-**Still condensed:**
-
-- M1.1 (if mirror still short — source is longest guided node)
-- M5–M8
+All modules **M0–M8** are mirrored in full on https://beckettsapere824.github.io/ml-notes/ (source of truth remains `c-machine-learning/nodes/`).
 
 ### Optional next
 
-1. Finish M1.1 + M5–M8 full mirrors
-2. Live formula QA pass
-3. More guided HTML demos
-4. Deepen thin topics beyond YAML
+1. Live formula QA pass across every node on the preview site
+2. More guided HTML demos where geometry is hard in text
+3. Deepen thin lecture topics beyond YAML coverage
+4. Homepage / Library link polish if needed
 
 ---
 
@@ -45,13 +34,17 @@ M0–M8 guided bilingual complete.
 
 ## Log
 
-### 2026-11-05
+### 2026-11-05 (later)
 
-- Full sync to ml-notes: M1.2, M1.3, M3.1–M3.5, M4.1–M4.5.
+- Full sync M5–M8; **ml-notes now matches nodes/ for entire tree**.
+
+### 2026-11-05 (earlier)
+
+- Full sync M1.1–M1.3, M3, M4.
 
 ### 2026-11-04
 
-- Full sync: M0.4, M0.9–M0.12, M2.1–M2.8.
+- Full sync M0.4, M0.9–M0.12, M2.1–M2.8.
 
 ### 2026-11-03
 
