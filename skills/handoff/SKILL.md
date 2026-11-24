@@ -1,8 +1,8 @@
 ---
 name: handoff
-description: Write next exact, timing, resume checklist; release Orches claim.
+description: Produce a complete cross-dialog handoff so a fresh agent can resume from files alone.
 ---
 
 # handoff
 
-Update progress.md + session-handoff.md; Orches claim released/handoff; local→push.
+Required: feature, Timing, done/remaining, Resume checklist, Known failure modes; progress Next exact; runs.md prepend.

@@ -1,14 +1,8 @@
 ---
 name: anti-drift
-description: Assert Orches identity (if any), read order, active track (ml/prob), and next exact from STUDY_BOARD or progress.
+description: Enforce identity assertion and mandatory startup checklist so the agent cannot silently leave the harness contract.
 ---
 
 # anti-drift
 
-Before other work, state from files:
-1. Identity claimed (or explicit no-Orches mode)
-2. Read order complete
-3. Track focus: ml | prob | both
-4. Next exact from STUDY_BOARD / progress / handoff
-
-If missing → stop and repair.
+Before any other work state from files: (1) Orches identity or repo harness (2) read order done (3) single active feature id (4) Next exact. If any missing, stop and repair.

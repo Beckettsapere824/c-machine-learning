@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "repo": "c-machine-learning",
+  "harness_upstream": "Beckettsapere824/agent-harness",
+  "features": [
+    {
+      "id": "HARNESS-TX",
+      "title": "Transplant agent-harness core",
+      "status": "done",
+      "definition_of_done": ["15 skills", "docs gates", "init/audit/assert", "AGENT overlay"],
+      "evidence": "2026-11-24 transplant"
+    },
+    {
+      "id": "STUDY-SAFE",
+      "title": "Surgical study edits; no knowledge wipe",
+      "status": "in_progress",
+      "definition_of_done": ["Hard bans held", "push-gate on nodes/data"],
+      "evidence": ""
+    }
+  ]
+}

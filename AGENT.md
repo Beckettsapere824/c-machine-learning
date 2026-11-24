@@ -1,51 +1,42 @@
-# AGENT.md — c-machine-learning (HARDENED)
+# AGENT.md — c-machine-learning (agent-harness transplant)
 
-**Read order (mandatory before ANY write):**  
-`AGENT.md` → `MEMORY.md` → `STUDY_BOARD.md` → `progress.md` / `session-handoff.md` → skim `skills/README.md` → target file only.
+**Upstream:** `Beckettsapere824/agent-harness`  
+Full portable pack: **15 skills**, push-gate, compliance, lessons, `init.sh`, `audit-harness.sh`, `tools/assert_no_stub.sh`.  
+**Do not replace with thin stubs.** Improve upstream via `propose-improvement`.
 
-If Orches identity: claim first, then this order.
+**Read order before ANY write:**  
+`AGENT.md` → `MEMORY.md` → `docs/HARNESS_LESSONS.md` → skim `docs/HARNESS_PUSH_GATE.md` → `feature_list.json` → `STUDY_BOARD.md` → `progress.md` → handoff/runs → skim `skills/README.md` → Orches claim if any.
 
 ---
 
 ## Mission
 
-Two tracks under one board: **ML** (this repo) and **Probability** (`Beckettsapere824/Probability`). Shared mastery/board here.
+Coordination board for **ML + Probability** tracks. ML nodes live here; Probability nodes in `Beckettsapere824/Probability` (same Orches learn-* roles).
 
 ---
 
-## HARD BANS (non-negotiable — violation = stop and report)
+## HARD BANS
 
-1. **Never delete** `nodes/*.md`, `data/prerequisite_tree.yaml`, bulk `resources/**` course dumps, or other agents’ mastery evidence without human order.
-2. **Never replace** large YAML/node trees with PLACEHOLDER / empty “pointer” stubs unless human explicitly ordered that exact change.
-3. **Never** collapse or rewrite the entire prerequisite tree in one shot to “clean up.”
-4. **Surgical edits only** — one node, one INDEX section, or one mastery row batch.
-5. **If unsure:** ask human or restore from git — do not blank files.
-6. **No force-push.**
-
-If deletion already happened this session: stop, report, restore — do not continue.
+1. Never bulk-delete `nodes/*`, `data/prerequisite_tree.yaml`, `learning/mastery.md` evidence, or course dumps under `resources/` without human order.
+2. Never PLACEHOLDER-collapse large knowledge files.
+3. Surgical edits only.
+4. push-gate before non-trivial push.
+5. If deletion already happened: stop, report, restore.
 
 ---
 
-## Roles (Orches learn)
+## Multi-agent
 
-| Role | May edit |
-|------|----------|
-| teach | Single nodes (this repo and/or Probability) |
-| library | `resources/INDEX` + careful adds; **no bulk deletes** |
-| assess | `learning/mastery.md`, STUDY_BOARD recommendations |
+One shared harness. Roles only in Orches identities.
 
 ---
 
-## Non-negotiables (ML node quality)
+## Upstream rules
 
-1. YAML 思路 before long prose when expanding structure.
-2. Guided narrative; bilingual EN then ZH.
-3. Safe KaTeX (MEMORY.md).
-4. Skills auto-match; anti-drift every startup.
-5. Local → immediate push.
+One feature; evidence before done; local→immediate push; anti-drift every dialog; DIALOG_MISS ≠ harness rewrite.
 
 ---
 
-## Startup assertion
+## End session
 
-State: (a) identity (b) read order (c) track ml|prob|both (d) next exact one target (e) hard bans acknowledged — then work.
+Next exact + handoff + runs.md + claim release.

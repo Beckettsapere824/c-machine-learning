@@ -1,8 +1,8 @@
 ---
 name: status-report
-description: Summarize STUDY_BOARD, mastery snapshot, open library rows.
+description: Emit structured status for Orches registry or human dashboard.
 ---
 
 # status-report
 
-Short table: track, top gaps, next recommendations.
+id, status, current_focus, next_exact, blockers, last_activity.

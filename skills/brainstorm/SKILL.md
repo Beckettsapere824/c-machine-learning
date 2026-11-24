@@ -1,8 +1,8 @@
 ---
 name: brainstorm
-description: Structure vague study requests into track + topic options.
+description: Turn a vague request into structured options and a decision before implementation.
 ---
 
 # brainstorm
 
-Offer 2–4 concrete next topics across ml/prob with tradeoffs; let human pick.
+2–4 options, trade-offs, recommend; write direction to progress.md.

@@ -1,8 +1,8 @@
 ---
 name: implement
-description: Single-node or single-index-section write with scope lock.
+description: Implement exactly one unfinished feature under scope lock; produce evidence before claiming done.
 ---
 
 # implement
 
-One focus unit (one node id or one INDEX section). Follow AGENT.md pedagogy. Push after durable edit.
+Touch only required files; verify; evidence before done; repo restartable.

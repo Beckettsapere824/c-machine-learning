@@ -1,8 +1,8 @@
 ---
 name: plan
-description: Ordered steps before multi-file or cross-repo teaching edits.
+description: Produce an ordered, verifiable step list for the single active feature before any file edits.
 ---
 
 # plan
 
-List files to touch (this repo and/or Probability), success check, then execute.
+One feature; steps with checkable outcomes; Next exact in progress.md.

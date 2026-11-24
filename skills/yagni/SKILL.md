@@ -1,8 +1,8 @@
 ---
 name: yagni
-description: Prefer small node fixes over tree-wide rewrites.
+description: Prefer the smallest change; delete or reuse before adding abstraction.
 ---
 
 # yagni
 
-Do not rebuild prerequisite_tree or all modules unless human asks.
+Smallest change. Never “simplify” by wiping knowledge trees.

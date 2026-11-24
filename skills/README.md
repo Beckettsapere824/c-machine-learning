@@ -1,22 +1,29 @@
-# skills/ — Progressive disclosure (study harness)
+# skills/ — Progressive Disclosure Skill Pack
 
-Ported from agent-harness; trimmed for learning repos.
+**Upstream:** transplanted from `Beckettsapere824/agent-harness`. Do not replace with thin stubs.
 
 ## Contract
 
-- `skills/<name>/SKILL.md` with name + description.
-- Startup: skim this README only; load full body on **auto-match** or explicit request.
-- Human need **not** type skill names for routine process.
+- Each skill: `skills/<name>/SKILL.md` with name + description.
+- Startup: skim this README only; full body on auto-match / demand.
+- Total ≤ 20; quality over quantity.
 
-## Pack
+## Current pack (15)
 
-| Skill | Auto-match when |
-|-------|-----------------|
-| anti-drift | Every startup / claim |
-| plan | Multi-step edit across nodes or repos |
-| implement | Writing/revising a single node or index section |
-| verify | Before claiming a node “done” or mastery ok |
-| handoff | Session end / limit |
-| status-report | Board / registry status for human |
-| brainstorm | Vague “what should I study” |
-| yagni | Avoid rewriting whole tree when a small fix works |
+| Skill | When to use |
+|-------|-------------|
+| brainstorm | Vague request → options + decision |
+| plan | Ordered steps before edits |
+| implement | Single-feature scope lock |
+| test-tdd | Failing check first |
+| debug | Root-cause before patch |
+| code-review | Structured review |
+| verify | Mechanical evidence |
+| handoff | Resume checklist |
+| yagni | Smallest change |
+| security-basics | Security checklist |
+| anti-drift | Startup assertion |
+| ledger | Phase ledger |
+| push-gate | No-stub integrity |
+| propose-improvement | Write back to agent-harness |
+| status-report | Orches status |

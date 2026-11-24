@@ -1,8 +1,8 @@
 ---
 name: verify
-description: Check node quality or mastery evidence before done/ok.
+description: Run mechanical verification and record evidence; never mark done on self-assessment alone.
 ---
 
 # verify
 
-For teach: bilingual structure, prereq links, one practice item. For assess: evidence required before mastery ok.
+init/audit/assert_no_stub + feature checks; record evidence. Self-praise is not evidence.
