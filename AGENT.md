@@ -9,6 +9,20 @@ Full portable pack: **15 skills**, push-gate, compliance, lessons, `init.sh`, `a
 
 ---
 
+## HARD GATE: Local mirror (every dialog)
+
+Grok does **not** auto-mount GitHub as the workspace. **Connector-only reads are not enough.**
+
+Before any product write:
+
+1. Write into the **dialog local workspace** at least: `AGENT.md`, `MEMORY.md` (if any), `feature_list.json`, `progress.md`, `STUDY_BOARD.md`, `skills/README.md`, `skills/anti-drift/SKILL.md`, `session-contract.md` (identity, repo, next_exact, mirror_ok).
+2. Verify local presence. If missing → **stop** and mirror.
+3. Skipping until the human reminds you = **DIALOG_MISS** (see Orches `docs/LOCAL_MIRROR.md`). Do not blame or weaken the harness.
+
+Durable edits: **local first → immediate GitHub push**.
+
+---
+
 ## Mission
 
 Coordination board for **ML + Probability** tracks. ML nodes live here; Probability nodes in `Beckettsapere824/Probability` (same Orches learn-* roles).
