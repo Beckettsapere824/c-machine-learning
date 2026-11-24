@@ -4,30 +4,28 @@ Newest entries at the **top** of each section.
 
 ---
 
-## Status (2026-11-05)
+## Status (2026-11-24)
 
-### Done — full planned tree in `nodes/`
+### Multi-agent study mode
 
-M0–M8 guided bilingual complete.
+- Orches project **learn**: roles teach / library / assess.
+- Primary this repo; secondary Probability + COMP3314.
+- See STUDY_BOARD.md, resources/INDEX.md, learning/mastery.md.
+
+### Done — full planned tree in `nodes/` (historical)
+
+M0–M8 guided bilingual complete (2026-11-05).
 
 ### ml-notes full-text sync — parity complete
 
 All modules **M0–M8** mirrored on https://beckettsapere824.github.io/ml-notes/
 
-### Papers (guided readings)
-
-- **Ng–Jordan–Weiss spectral clustering (theory)**  
-  - Source: `notes/spectral-clustering-ngjw.md`  
-  - Preview: https://beckettsapere824.github.io/ml-notes/#PAPER-spectral-clustering  
-  - Nav: bottom of left column (“Paper · NJW spectral”)  
-  - Linked from M5.1
-
 ### Optional next
 
-1. Live formula QA pass
-2. More guided HTML demos
-3. Deepen thin topics / more paper readings
-4. Expand Theorem 2 proof inequalities on request
+1. Assess bootstrap + human first diagnostic
+2. Library COMP3314 index fill
+3. Teach deepen weak topics / Probability optimization on request
+4. More guided HTML demos
 
 ---
 
@@ -42,7 +40,10 @@ All modules **M0–M8** mirrored on https://beckettsapere824.github.io/ml-notes/
 
 ## Log
 
+### 2026-11-24
+
+- Orches learn-* identities; STUDY_BOARD; resources/INDEX; learning/mastery; progress/handoff.
+
 ### 2026-11-05
 
-- Added guided NJW spectral clustering paper (Lectures 0–7); nav + M5.1 link.
-- Full M0–M8 ml-notes parity earlier same day.
+- Added guided NJW spectral clustering paper; full M0–M8 ml-notes parity.
